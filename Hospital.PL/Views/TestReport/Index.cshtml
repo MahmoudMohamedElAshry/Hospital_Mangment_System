@@ -1,0 +1,56 @@
+﻿@model IEnumerable<TestReportViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="py-2 text-end mt-5 pt-4">
+    <a asp-action="Create" class="btn btn-outline-success"> Create New TestReport</a>
+</div>
+@if(Model.Count() > 0)
+{
+  <div class="container py-2 text-center">
+         <h2 class="mb-4"> All Test Report </h2>
+       
+    <table class="container table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(r => r.TestType)</th>
+                <th>@Html.DisplayNameFor(r => r.Result)</th>
+                <th>@Html.DisplayNameFor(r => r.Treatment)</th>
+                <th>@Html.DisplayNameFor(r => r.Patient)</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+          
+                     @foreach (var TestReport in Model)
+                     {
+					        <tr onclick="window.location='@Url.Action("Details","TestReport",new{Id = TestReport.ID})'">
+
+                                   <td>@TestReport.TestType</td>
+                                   <td>@TestReport.Result</td>
+                                   <td>@TestReport.Treatment</td>
+                                   <td>@TestReport.Patient?.Name</td>
+					    	     <partial name="_ButtonPartial" model="@TestReport.ID.ToString()" />
+					        </tr>
+		             } 
+              
+			
+        </tbody>
+
+    </table>
+  </div>
+}
+else
+{
+    
+    <div class="about-section text-center">
+         <div class="container">
+			<h2 class="mb-4">Don't have Test Report</h2>
+			<p>You Can to Add More Test Report.</p>
+        </div> 
+    </div>   
+
+}

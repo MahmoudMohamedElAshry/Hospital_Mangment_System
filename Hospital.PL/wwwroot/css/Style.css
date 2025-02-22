@@ -1,0 +1,106 @@
+﻿/* تنسيق عام للصفحة */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+/* صندوق النموذج */
+.container {
+    background-color: white;
+    padding: 45px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 550px;
+    text-align: center;
+}
+
+/* عنوان النموذج */
+h2 {
+    margin-bottom: 20px;
+}
+
+/* تنسيق الحقول */
+.form-group {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+/* تحسين تنسيق Checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    
+}
+input[type="checkbox"] {
+    width: 10px;
+    height: 10px;
+    appearance: none; /* إزالة الشكل الافتراضي */
+    border: 2px solid black; /* تحديد لون الحدود */
+    background-color: white;
+    cursor: pointer;
+    position: relative;
+    transition:all 0.3s ease-in-out;
+    top:15px;
+}
+input[type="checkbox"]:checked
+{
+    background-color:black;
+    border-color:black;
+}
+input[type="checkbox"]:checked::after {
+    content: "✔";
+    font-size: 16px;
+    color: white;
+    position: absolute;
+    left: 3px;
+    top: -2px;
+}
+
+label {
+    font-size: 15px;
+    margin-top:-20px;
+    display:inline-block;
+}
+
+
+/* زر التسجيل */
+.btn-outline-dark {
+    width: 100%;
+    padding: 10px;
+    border: 2px solid #343a40;
+    background: none;
+    color: #343a40;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: 0.3s;
+    margin-left:12px;
+}
+
+.btn-outline-dark:hover {
+    background: #343a40;
+    color: white;
+}
+.SignIn-link{
+    color:black;
+}

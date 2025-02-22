@@ -1,0 +1,21 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+	<title> @ViewData["Title"]</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<!-- Custom Theme files -->
+	<link href="~/css/Style.css" rel="stylesheet" type="text/css" media="all" />
+
+</head>
+<body>
+	<!-- main -->
+	<div style="max-width:900px;" class=" about-section mt-5 container text-center">
+		<h1>@ViewData["Title"]</h1>
+		@RenderBody();
+	</div>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

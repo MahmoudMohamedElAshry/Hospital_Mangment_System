@@ -1,0 +1,59 @@
+﻿
+@model PatientViewModel
+ @inject IUnitOfWork _unitofwork 
+@{
+    var Rooms = new SelectList(_unitofwork.RoomRepository.GetAll(), nameof(Room.ID), nameof(Room.RoomNumber));
+    var Doctors = new SelectList(_unitofwork.DoctorRepository.GetAll(), nameof(Doctor.ID), nameof(Doctor.Name));
+}
+    
+    <div class="container mb-5">
+        <label asp-for="Name" class="col-form-label"></label>
+		<input asp-for="Name" class="form-control">
+        <span asp-validation-for="Name"></span>
+    </div>
+	<div class="container mb-5">
+        <label asp-for="Age" class="col-form-label"></label>
+        <input asp-for="Age" class="form-control">
+        <span asp-validation-for="Age"></span>
+
+    </div>
+    <div class="container mb-5">
+	        <label>Gender</label>
+	        <div class="d-flex justify-content-around" style="gap:30px;">
+
+	        	@foreach (var Gender in Enum.GetValues(typeof(Genders)))
+	        	{
+                    <div class="form-check form-check-inline"> 
+	        		    <label asp-for="@Gender" class="form-check-label">@Gender</label>
+	        		    <input asp-for="Gender" class="form-check-input" type="radio" value="@Gender" name="Gender" />
+                    </div>
+	        	}
+	        </div>
+    </div>
+   
+    <div class="container mb-5">
+        <label asp-for="BookingDate" class="col-form-label"></label>
+        <input asp-for="BookingDate" class="form-control">
+        <span asp-validation-for="BookingDate"></span>
+
+    </div>
+
+    <div class="container mb-5">
+        <label asp-for="Phone" class="col-form-label"></label>
+        <input asp-for="Phone" class="form-control">
+        <span asp-validation-for="Phone"></span>
+
+    </div>
+
+    <div class="container mb-5">
+         <label asp-for="Room" class="col-form-label"></label>
+         <select class="form-control" asp-for="RoomId" asp-items="@Rooms">
+             <option value="@null">Select Room</option>
+         </select>
+    </div> 
+     <div class="container mb-5">
+        <label asp-for="Doctor" class="col-form-label"></label>
+         <select class="form-control" asp-for="DoctorId" asp-items="@Doctors">
+             <option value="@null"></option>
+         </select>
+    </div> 

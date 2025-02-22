@@ -1,0 +1,31 @@
+﻿
+@model TestReportViewModel
+ @inject IUnitOfWork _unitofwork
+@{
+    var patients = new SelectList(_unitofwork.PatientRepository.GetAll(), nameof(Patient.ID), nameof(Patient.Name));
+}
+
+    <div class="container mb-5">
+        <label asp-for="TestType" class="col-form-label"></label>
+		<input asp-for="TestType" class="form-control">
+        <span asp-validation-for="TestType"></span>
+    </div>
+	<div class="container mb-5">
+        <label asp-for="Result" class="col-form-label"></label>
+        <input asp-for="Result" class="form-control">
+        <span asp-validation-for="Result"></span>
+
+    </div>
+    <div class="container mb-5">
+        <label asp-for="Treatment" class="col-form-label"></label>
+        <input asp-for="Treatment" class="form-control">
+        <span asp-validation-for="Treatment"></span>
+    </div>
+    <div class="container mb-5">
+        <label asp-for="Patient" class="col-form-label"></label>
+        <select class="form-control" asp-for="PatientID" asp-items="@patients">
+            <option value="@null"></option>
+        </select>
+    </div>
+
+

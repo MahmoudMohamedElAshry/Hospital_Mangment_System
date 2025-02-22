@@ -1,0 +1,59 @@
+﻿@model IEnumerable<DepartmentViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="py-2 text-end mt-5 pt-4">
+    <a asp-action="Create" class="btn btn-outline-success">Create New Department</a>
+</div>
+@if(Model.Count() > 0)
+{
+  <div class="container py-2 text-center">
+         <h2 class="mb-4">All Department</h2>
+
+        <div class="d-none d-md-inline-block form-inline ms-auto ms-0 me-md-3 my-2 my-md-0">
+            <form asp-action="Index" class="d-flex">
+                <div>
+                    <input class="form-control me-2" type="text" placeholder="Search By Name" name="Name">
+				</div>
+                <div>
+                    <input class="btn btn-outline-dark ms-2" type="submit" value="Search">
+                </div>
+            </form>
+        </div>
+    <table class=" container table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(d => d.Name)</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+          
+                     @foreach (var Department in Model)
+                     {
+					        <tr onclick="window.location='@Url.Action("Details","Department",new{Id = Department.ID})'">
+                                   <td>@Department.Name</td>
+					    	     <partial name="_ButtonPartial" model="@Department.ID.ToString()" />
+					        </tr>
+		             } 
+              
+			
+        </tbody>
+
+    </table>
+  </div>
+}
+else
+{
+    
+    <div class="about-section text-center">
+         <div class="container">
+			<h2 class="mb-4">Don't have Department</h2>
+			<p>You Can to Add More Department.</p>
+        </div> 
+    </div>   
+
+}

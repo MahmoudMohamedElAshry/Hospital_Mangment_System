@@ -1,0 +1,44 @@
+﻿@model DoctorViewModel
+@inject IUnitOfWork _unitofwork
+@{
+    var Departments = new SelectList(_unitofwork.DepartmentRepository.GetAll(), nameof(Department.ID), nameof(Department.Name));
+}
+<table class="container table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(D => D.Name)</th>
+            <th>@Html.DisplayNameFor(D => D.Age)</th>
+            <th>@Html.DisplayNameFor(D => D.Gender)</th>
+            <th>@Html.DisplayNameFor(D => D.Salary)</th>
+            <th>@Html.DisplayNameFor(D => D.Phone)</th>
+            <th>@Html.DisplayNameFor(D => D.Email)</th>
+            <th>@Html.DisplayNameFor(D => D.Address)</th>
+            <th>@Html.DisplayNameFor(D => D.City)</th>
+            <th>@Html.DisplayNameFor(D => D.Country)</th>
+            <th>@Html.DisplayNameFor(D => D.YearOfExp)</th>
+            <th>@Html.DisplayNameFor(D => D.Qualification)</th>
+            <th>@Html.DisplayNameFor(D => D.Specialization)</th>
+            <th>@Html.DisplayNameFor(D => D.Department)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            
+            <td>@Model.Name</td>
+            <td>@Model.Age</td>
+            <td>@Model.Gender</td>
+            <td>@Html.DisplayFor(m => Model.Salary)</td>
+            <td>@Html.DisplayFor(m => Model.Phone)</td>
+            <td>@Html.DisplayFor(m => Model.Email)</td>
+            <td>@Model.Address</td>
+            <td>@Model.City</td>
+            <td>@Model.Country</td>
+            <td>@Model.YearOfExp</td>
+            <td>@Model.Qualification</td>
+            <td>@Model.Specialization</td>
+            <td>@Model.Department?.Name</td>
+
+        </tr>
+    </tbody>
+
+</table>

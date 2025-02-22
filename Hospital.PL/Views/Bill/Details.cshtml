@@ -1,0 +1,19 @@
+﻿@model BillViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div style="max-width:700px;" class=" about-section mt-5 container text-center">
+    <h2 class="mb-4">Details Bill</h2>
+    <form asp-action="Details">
+
+        <div asp-validation-summary="ModelOnly"></div>
+        <partial name="PartialBill/DeleteAndDetailsBill">
+            <div class="mt-4">
+                <a asp-controller="Patient" asp-action="Index" class="btn btn-outline-info">Go to Patient </a>
+                 <a asp-action="Index" class="btn btn-outline-dark">Back To List</a>
+            </div>
+    </form>
+</div>
+
+

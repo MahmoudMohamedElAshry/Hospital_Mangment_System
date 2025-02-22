@@ -1,0 +1,26 @@
+﻿
+@model BillViewModel
+ @inject IUnitOfWork _unitofwork
+@{
+    var patients = new SelectList(_unitofwork.PatientRepository.GetAll(), nameof(Patient.ID), nameof(Patient.Name));
+}
+
+    <div class="container mb-5">
+        <label asp-for="Amount" class="col-form-label"></label>
+		<input asp-for="Amount" class="form-control">
+        <span asp-validation-for="Amount"></span>
+    </div>
+    <div class="container mb-5">
+        <label asp-for="BookingDate" class="col-form-label"></label>
+		<input asp-for="BookingDate" class="form-control">
+        <span asp-validation-for="BookingDate"></span>
+    </div>
+	
+    <div class="container mb-5">
+        <label asp-for="Patient" class="col-form-label"></label>
+        <select class="form-control" asp-for="PatientId" asp-items="@patients">
+            <option value="@null"></option>
+        </select>
+    </div>
+
+

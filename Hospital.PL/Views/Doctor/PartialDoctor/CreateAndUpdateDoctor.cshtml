@@ -1,0 +1,82 @@
+﻿
+@model DoctorViewModel
+ @inject IUnitOfWork _unitofwork 
+@{
+    var Departments = new SelectList(_unitofwork.DepartmentRepository.GetAll(), nameof(Department.ID), nameof(Department.Name));
+}
+    
+<div class="container mb-5">
+    <label asp-for="Name" class="col-form-label"></label>
+    <input asp-for="Name" class="form-control">
+    <span asp-validation-for="Name"></span>
+</div>
+<div class="container mb-5">
+       <label asp-for="Age" class="col-form-label"></label>
+       <input asp-for="Age" class="form-control">
+       <span asp-validation-for="Age"></span>
+</div>
+<div class="container mb-5">
+     <label>Gender</label>
+     <div class="d-flex justify-content-around" style="gap:30px;">
+
+     	@foreach (var Gender in Enum.GetValues(typeof(Genders)))
+     	{
+                <div class="form-check form-check-inline"> 
+     		    <label asp-for="@Gender" class="form-check-label">@Gender</label>
+     		    <input asp-for="Gender" class="form-check-input" type="radio" value="@Gender" name="Gender" />
+                </div>
+     	}
+     </div>
+</div>
+<div class="container mb-5">
+     <label asp-for="Salary" class="col-form-label"></label>
+     <input asp-for="Salary" class="form-control">
+     <span asp-validation-for="Salary"></span>
+</div>
+<div class="container mb-5">
+    <label asp-for="Phone" class="col-form-label"></label>
+    <input asp-for="Phone" class="form-control">
+    <span asp-validation-for="Phone"></span>
+</div>
+<div class="container mb-5">
+    <label asp-for="Email" class="col-form-label"></label>
+    <input asp-for="Email" class="form-control">
+    <span asp-validation-for="Email"></span>
+</div>
+<div class="container mb-5">
+    <label asp-for="Address" class="col-form-label"></label>
+    <input asp-for="Address" class="form-control">
+    <span asp-validation-for="Address"></span>
+</div>
+<div class="container mb-5">
+    <label asp-for="City" class="col-form-label"></label>
+    <input asp-for="City" class="form-control">
+    <span asp-validation-for="City"></span>
+</div>
+<div class="container mb-5">
+    <label asp-for="Country" class="col-form-label"></label>
+    <input asp-for="Country" class="form-control">
+    <span asp-validation-for="Country"></span>
+</div>
+<div class="container mb-5">
+    <label asp-for="YearOfExp" class="col-form-label"></label>
+    <input asp-for="YearOfExp" class="form-control">
+    <span asp-validation-for="YearOfExp"></span>
+</div>
+<div class="container mb-5">
+    <label asp-for="Qualification" class="col-form-label"></label>
+    <input asp-for="Qualification" class="form-control">
+    <span asp-validation-for="Qualification"></span>
+</div>
+<div class="container mb-5">
+    <label asp-for="Specialization" class="col-form-label"></label>
+    <input asp-for="Specialization" class="form-control">
+    <span asp-validation-for="Specialization"></span>
+</div>
+<div class="container mb-5">
+     <label asp-for="Department" class="col-form-label"></label>
+     <select class="form-control" asp-for="DepartmentId" asp-items="@Departments">
+         <option value="@null"></option>
+     </select>
+</div> 
+ 

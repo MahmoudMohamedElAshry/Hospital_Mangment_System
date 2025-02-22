@@ -1,0 +1,19 @@
+﻿@model RoomViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div style="max-width:700px;" class=" about-section mt-5 container text-center">
+    <h2 class="mb-4">Details Room</h2>
+    <form asp-action="Details">
+
+        <div asp-validation-summary="ModelOnly"></div>
+        <partial name="PartialRoom/DeleteAndDetailsRoom">
+            <div class="mt-4">
+
+                 <a asp-action="Index" class="btn btn-outline-dark">Back To List</a>
+            </div>
+    </form>
+</div>
+
+

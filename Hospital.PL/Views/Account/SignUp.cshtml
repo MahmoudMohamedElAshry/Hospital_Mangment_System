@@ -1,0 +1,46 @@
+﻿@model SignUpViewModel
+@{
+    ViewData["Title"] = "SignUp";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+} 
+<div>
+    <form asp-action="SignUp" class="form-group">
+        <div asp-validation-summary="All"></div>
+        <div class="form-group">
+            <input class="text" asp-for="UserName" placeholder="User Name" required="">
+        </div>
+
+        <div class="form-group">
+            <input class="text" asp-for="Email" placeholder="Email" required="">
+        </div>
+
+        <div class="form-group">
+            <input class="text" asp-for="Password" placeholder="Password" required="">
+        </div>
+
+        <div class="form-group">
+            <input class="text" asp-for="ConfirmPassword" placeholder="ConfirmPassword" required="">
+        </div>
+
+        <div class="form-group checkbox-group">
+            <label class="ms-5">
+				<input asp-for="IsAgree" class="checkbox" required="">
+			</label>I Agree To The Terms & Conditions
+            
+        </div>
+        <input type="submit" value="SignUp" class="btn-outline-dark">
+    </form>
+    <p>Do you have an Account ? <a class="SignIn-link" asp-action="SignIn">SignIn Now</a></p>
+</div>
+
+
+
+@section Scripts
+{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}
+ 
+
+ 

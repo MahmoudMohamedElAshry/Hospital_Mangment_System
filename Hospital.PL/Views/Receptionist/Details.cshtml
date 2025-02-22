@@ -1,0 +1,19 @@
+﻿@model ReceptionistViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class=" about-section mt-5 container text-center">
+    <h2 class="mb-4">Details @Model.Name</h2>
+    <form asp-action="Details">
+        <div class="container py-2 text-center">
+            <div asp-validation-summary="ModelOnly"></div>
+            <partial name="PartialReceptionist\DeleteAndDetailsReceptionist">
+            <div class="mt-4">
+                <a asp-action="Index" class="btn btn-outline-dark">Back To List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+

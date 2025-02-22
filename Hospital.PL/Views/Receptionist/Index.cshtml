@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ReceptionistViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="py-2 text-end mt-5 pt-4">
+    <a asp-controller="Receptionist" asp-action="Create" class="btn btn-outline-success">Create New Receptionist</a>
+</div>
+@if(Model.Count() > 0)
+{
+  <div class="container py-2 text-center">
+         <h2 class="mb-4">All Receptionist</h2>
+
+        <div class="d-none d-md-inline-block form-inline ms-auto ms-0 me-md-3 my-2 my-md-0">
+            <form asp-action="Index" class="d-flex">
+                <div>
+                    <input class="form-control me-2" type="text" placeholder="Search By Name" name="Search">
+				</div>
+                <div>
+                    <input class="btn btn-outline-dark ms-2" type="submit" value="Search">
+                </div>
+            </form>
+        </div>
+    <table class="container table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(D => D.Name)</th>
+                <th>@Html.DisplayNameFor(D => D.Age)</th>
+                <th>@Html.DisplayNameFor(D => D.Gender)</th>
+                <th>@Html.DisplayNameFor(D => D.Department)</th> 
+
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+          
+                     @foreach (var Receptionist in Model)
+                     {
+					        <tr onclick="window.location='@Url.Action("Details","Receptionist",new{ID = Receptionist.ID})'">
+
+                                   <td>@Receptionist.Name</td>
+                                   <td>@Receptionist.Age</td>
+                                   <td>@Receptionist.Gender</td>
+                                   <td>@Receptionist.Department?.Name</td>
+
+					    	     <partial name="_ButtonPartial" model="@Receptionist.ID.ToString()" />
+					        </tr>
+		             } 
+               
+        </tbody>
+
+    </table>
+  </div>
+}
+else
+{
+    
+    <div class="about-section text-center">
+         <div class="container">
+			<h2 class="mb-4">Don't have Receptionist</h2>
+			<p>You Can to Add More Receptionist.</p>
+        </div> 
+    </div>   
+
+}

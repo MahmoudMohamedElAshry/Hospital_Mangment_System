@@ -1,0 +1,54 @@
+﻿@model IEnumerable<BillViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="py-2 text-end mt-5 pt-4">
+    <a asp-action="Create" class="btn btn-outline-success"> Create New Bill</a>
+</div>
+@if(Model.Count() > 0)
+{
+  <div class="container py-2 text-center">
+         <h2 class="mb-4"> All Test Report </h2>
+       
+    <table class="container table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(r => r.Amount)</th>
+                <th>@Html.DisplayNameFor(r => r.BookingDate)</th>
+                <th>@Html.DisplayNameFor(r => r.Patient)</th>
+                <th>Action</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+          
+                     @foreach (var Bill in Model)
+                     {
+					        <tr onclick="window.location='@Url.Action("Details","Bill",new{Id = Bill.ID})'">
+                                   
+                                   <td>@Bill.Amount</td>
+                                   <td>@Bill.BookingDate</td>
+                                   <td>@Bill.Patient?.Name</td>
+					    	     <partial name="_ButtonPartial" model="@Bill.ID.ToString()" />
+					        </tr>
+		             } 
+              
+			
+        </tbody>
+
+    </table>
+  </div>
+}
+else
+{
+    
+    <div class="about-section text-center">
+         <div class="container">
+			<h2 class="mb-4">Don't have Bill</h2>
+			<p>You Can to Add More Bill.</p>
+        </div> 
+    </div>   
+
+}

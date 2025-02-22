@@ -1,0 +1,24 @@
+﻿@model BillViewModel
+@{
+    ViewData["Title"] = "Update";
+}
+
+
+<div style="max-width:700px;" class=" about-section mt-5 container text-center">
+    <h2 class="mb-4">Update Bill</h2>
+    <form asp-controller="Bill" asp-action="Update">
+        <div asp-validation-summary="ModelOnly"></div>
+        <partial name="PartialBill/CreateAndUpdateBill">
+            <div class="mt-4">
+                 <input type="submit" value="Update" class="btn btn-outline-success" />
+                 <a asp-action="Index" class="btn btn-outline-dark">Back To List</a>
+            </div>
+    </form>
+</div>
+@section Scripts
+{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+
+}

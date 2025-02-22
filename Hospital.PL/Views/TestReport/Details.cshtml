@@ -1,0 +1,20 @@
+﻿@model TestReportViewModel
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div style="max-width:700px;" class=" about-section mt-5 container text-center">
+    <h2 class="mb-4">Details TestReport</h2>
+    <form asp-action="Details">
+
+        <div asp-validation-summary="ModelOnly"></div>
+        <partial name="PartialTestReport/DeleteAndDetailsTestReport">
+            <div class="mt-4">
+
+                 <a asp-action="Inside" class="btn btn-outline-info">Go to Patient </a>
+                 <a asp-action="Index" class="btn btn-outline-dark">Back To List</a>
+            </div>
+    </form>
+</div>
+
+

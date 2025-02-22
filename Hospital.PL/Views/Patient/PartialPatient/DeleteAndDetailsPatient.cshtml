@@ -1,0 +1,34 @@
+﻿
+@model PatientViewModel
+@inject IUnitOfWork _unitofwork
+@{
+    var Rooms = new SelectList(_unitofwork.RoomRepository.GetAll(), nameof(Room.ID), nameof(Room.RoomNumber));
+    var Doctors = new SelectList(_unitofwork.DoctorRepository.GetAll(), nameof(Doctor.ID), nameof(Doctor.Name));
+}
+<table class=" container table table-striped table-hover">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(D => D.Name)</th>
+            <th>@Html.DisplayNameFor(D => D.Age)</th>
+            <th>@Html.DisplayNameFor(D => D.Gender)</th>
+            <th>@Html.DisplayNameFor(D => D.BookingDate)</th>
+            <th>@Html.DisplayNameFor(D => D.Phone)</th>
+            <th>@Html.DisplayNameFor(D => D.Doctor)</th>
+            <th>@Html.DisplayNameFor(D => D.Room)</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+
+            <td>@Model.Name</td>
+            <td>@Model.Age</td>
+            <td>@Model.Gender</td>
+            <td>@Model.BookingDate</td>
+            <td>@Html.DisplayFor(p => Model.Phone)</td>
+            <td>@Model.Doctor?.Name</td>
+            <td>@Model.Room?.RoomNumber</td>
+
+        </tr>
+    </tbody>
+
+</table>
